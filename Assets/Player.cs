@@ -27,7 +27,7 @@ public class Player : MonoBehaviour {
     [SerializeField]
     float positionYawFactor = 2f;
     [SerializeField]
-    float positionRollFactor = -20f;
+    float controlRollFactor = -20f;
 
     float horizontalThrow, verticalThrow;
     // Update is called once per frame
@@ -60,7 +60,7 @@ public class Player : MonoBehaviour {
     private void AdjustRotation() {
         float pitch = transform.localPosition.y * positionPitchFactor + verticalThrow * controlPitchFactor;
         float yaw = transform.localPosition.x * positionYawFactor;
-        float roll = horizontalThrow * positionRollFactor;
+        float roll = horizontalThrow * controlRollFactor +Mathf.Abs(transform.localPosition.x)*(-3* Mathf.Sign(transform.localPosition.x)* Mathf.Sign(transform.localPosition.y));
         transform.localRotation = Quaternion.Euler(pitch,yaw,roll);
     }
 
