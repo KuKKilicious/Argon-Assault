@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class Player : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
+    [Header("General")]
     [Tooltip("In ms^-1")]
     [SerializeField]
     float xMovementSpeed = 16f;
@@ -20,25 +21,30 @@ public class Player : MonoBehaviour {
     [SerializeField]
     float yClampMinMax = 4.7f;
 
+    [Header("Screen-position based")]
     [SerializeField]
     float positionPitchFactor = -3f;
     [SerializeField]
-    float controlPitchFactor = -8f;
-    [SerializeField]
     float positionYawFactor = 2f;
+    [Header("Control-throw Based")]
     [SerializeField]
     float controlRollFactor = -20f;
-
+    [SerializeField]
+    float controlPitchFactor = -8f;
     float horizontalThrow, verticalThrow;
+    bool isControlEnabled = true;
     // Update is called once per frame
     void Update() {
 
-        
+        if (isControlEnabled) {
         //Process Translation
         HandleMovement();
         //Process Rotation
         AdjustRotation();
+        }
     }
+
+    
 
     private void HandleMovement() {
         horizontalThrow = CrossPlatformInputManager.GetAxis("Horizontal");
@@ -63,5 +69,7 @@ public class Player : MonoBehaviour {
         float roll = horizontalThrow * controlRollFactor +Mathf.Abs(transform.localPosition.x)*(-3* Mathf.Sign(transform.localPosition.x)* Mathf.Sign(transform.localPosition.y));
         transform.localRotation = Quaternion.Euler(pitch,yaw,roll);
     }
-
+    private void OnPlayerDeath() { //called by string reference
+        Debug.Log("OnPlayerDeath called");
+    }
 }

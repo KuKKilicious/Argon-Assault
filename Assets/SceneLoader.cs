@@ -3,19 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MusicPlayer : MonoBehaviour {
+public class SceneLoader : MonoBehaviour {
     [SerializeField]
     int waitForSeconds = 4;
-
-    private void Awake() {
-        DontDestroyOnLoad(gameObject);
-    }
     // Use this for initialization
-    void Start () {
+    void Start() {
         StartCoroutine(LoadNextLevel());
-	}
-	
-	private IEnumerator LoadNextLevel() {
+    }
+
+    private IEnumerator LoadNextLevel() {
         yield return new WaitForSeconds(waitForSeconds);
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
