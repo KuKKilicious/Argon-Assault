@@ -96,3 +96,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathFX: {fileID: 1373671874940890, guid: 47ce0e5ad39bb034892551b35257019c, type: 2}
+  parent: {fileID: 0}
+  scoreWorth: 31

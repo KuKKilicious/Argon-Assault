@@ -9,9 +9,12 @@ public class Enemy : MonoBehaviour {
     [SerializeField]
     Transform parent;
     [SerializeField]
-    int scoreWorth;
+    int scoreWorth = 17;
+    private ScoreBoard scoreBoard;
 	// Use this for initialization
 	void Start () {
+        scoreBoard = FindObjectOfType<ScoreBoard>();
+
         AddNonTriggerBoxCollider(); 
         
 	}
@@ -23,8 +26,10 @@ public class Enemy : MonoBehaviour {
 
     private void OnParticleCollision(GameObject other) {
         GameObject fx = Instantiate(deathFX, transform.position, Quaternion.identity);
-
+        
         fx.transform.parent = parent;
+
+        scoreBoard.ScoreHit(scoreWorth);
         Destroy(gameObject);
     }
 }
