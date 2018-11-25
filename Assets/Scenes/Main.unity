@@ -318,6 +318,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 271418867}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &463148938 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1680378524590692, guid: f75623a74f840924f9e832a6fcfb0646,
+    type: 2}
+  m_PrefabInternal: {fileID: 1840441600}
 --- !u!1 &532287757
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,6 +762,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d7afa73fcb1fce4cb4b65361a29bcbd, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1229814943 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1375625288362738, guid: f75623a74f840924f9e832a6fcfb0646,
+    type: 2}
+  m_PrefabInternal: {fileID: 1840441600}
 --- !u!4 &1237947501 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4990607877152018, guid: 6d7afa73fcb1fce4cb4b65361a29bcbd,
@@ -898,6 +908,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 534669905}
     m_Modifications:
+    - target: {fileID: 114546975293808880, guid: f75623a74f840924f9e832a6fcfb0646,
+        type: 2}
+      propertyPath: guns.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4627999749942782, guid: f75623a74f840924f9e832a6fcfb0646, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -934,6 +949,24 @@ Prefab:
       propertyPath: m_Name
       value: Player Ship
       objectReference: {fileID: 0}
+    - target: {fileID: 1680378524590692, guid: f75623a74f840924f9e832a6fcfb0646, type: 2}
+      propertyPath: m_Name
+      value: Gun left
+      objectReference: {fileID: 0}
+    - target: {fileID: 1375625288362738, guid: f75623a74f840924f9e832a6fcfb0646, type: 2}
+      propertyPath: m_Name
+      value: Gun right
+      objectReference: {fileID: 0}
+    - target: {fileID: 114546975293808880, guid: f75623a74f840924f9e832a6fcfb0646,
+        type: 2}
+      propertyPath: guns.Array.data[0]
+      value: 
+      objectReference: {fileID: 463148938}
+    - target: {fileID: 114546975293808880, guid: f75623a74f840924f9e832a6fcfb0646,
+        type: 2}
+      propertyPath: guns.Array.data[1]
+      value: 
+      objectReference: {fileID: 1229814943}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f75623a74f840924f9e832a6fcfb0646, type: 2}
   m_IsPrefabAsset: 0

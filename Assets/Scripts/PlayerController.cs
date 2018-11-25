@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour {
     [Tooltip("In ms^-1")]
     [SerializeField]
     float xMovementSpeed = 16f;
+    [SerializeField]
+    GameObject[] guns;
 
     [Tooltip("In ms^-1")]
     [SerializeField]
@@ -37,14 +39,16 @@ public class PlayerController : MonoBehaviour {
     void Update() {
 
         if (isControlEnabled) {
-        //Process Translation
-        HandleMovement();
-        //Process Rotation
-        AdjustRotation();
+            //Process Translation
+            HandleMovement();
+            //Process Rotation
+            AdjustRotation();
+            //Process Firing
+            ProcessFiring();
         }
     }
 
-    
+
 
     private void HandleMovement() {
         horizontalThrow = CrossPlatformInputManager.GetAxis("Horizontal");
@@ -66,8 +70,19 @@ public class PlayerController : MonoBehaviour {
     private void AdjustRotation() {
         float pitch = transform.localPosition.y * positionPitchFactor + verticalThrow * controlPitchFactor;
         float yaw = transform.localPosition.x * positionYawFactor;
-        float roll = horizontalThrow * controlRollFactor +Mathf.Abs(transform.localPosition.x)*(-3* Mathf.Sign(transform.localPosition.x)* Mathf.Sign(transform.localPosition.y));
-        transform.localRotation = Quaternion.Euler(pitch,yaw,roll);
+        float roll = horizontalThrow * controlRollFactor + Mathf.Abs(transform.localPosition.x) * (-3 * Mathf.Sign(transform.localPosition.x) * Mathf.Sign(transform.localPosition.y));
+        transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
+    }
+
+    private void ProcessFiring() {
+        foreach (GameObject gun in guns) {
+            if (CrossPlatformInputManager.GetButton("Fire")) {
+                gun.SetActive(true);
+            } else {
+                gun.SetActive(false);
+            }
+        }
+
     }
     private void OnPlayerDeath() { //called by string reference
         Debug.Log("OnPlayerDeath called");
