@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23413581245250402}
   - component: {fileID: 114087532197944948}
   m_Layer: 0
-  m_Name: Ship_03
+  m_Name: Nightwing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
